@@ -1,4 +1,4 @@
-const images = ["img01", "img02", "img03", "img04", "img05"];
+const images = ["img01", "img02", "img03", "img04", "img05", ];
 
 function getCurrentIndex() {
   const id = location.hash.replace("#", "");
@@ -44,3 +44,27 @@ document.addEventListener("wheel", (e) => {
     openImage((currentIndex - 1 + images.length) % images.length);
   }
 }, { passive: false });
+let startX = 0;
+let endX = 0;
+
+document.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+
+  const currentIndex = getCurrentIndex();
+
+  if (currentIndex === -1) return;
+
+  const diff = endX - startX;
+
+  if (Math.abs(diff) < 50) return;
+
+  if (diff < 0) {
+    openImage((currentIndex + 1) % images.length);
+  } else {
+    openImage((currentIndex - 1 + images.length) % images.length);
+  }
+});
