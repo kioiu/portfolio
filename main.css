@@ -200,3 +200,6 @@ footer {
   color: #f5f5f5;
   text-decoration: none;
 }
+html {
+  scroll-behavior: smooth;
+}
