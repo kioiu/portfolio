@@ -13,7 +13,13 @@ const images = [
 
   "images/sunset2.jpg",
 
-  "images/tokei.jpg"
+  "images/tokei.jpg",
+
+  "images/summer.JPG",
+  
+    "images/hotaru_v.JPG",
+
+      "images/room.JPG"
 ];
 
 const heroBg = document.querySelector(".hero-bg");
