@@ -1,39 +1,68 @@
-const images = ["img01", "img02", "img03", "img04", "img05", "img06", "img07", "img08", "img09", "img10", "img11", "img12", "img13", "img14", "img15", "img16", "img17", "img18"];
+const images = [
+  "img01", "img02", "img03", "img04", "img05", "img06",
+  "img07", "img08", "img09", "img10", "img11", "img12",
+  "img13", "img14", "img15", "img16", "img17", "img18"
+];
 
-function getCurrentIndex() {
-  const id = location.hash.replace("#", "");
-  return images.indexOf(id);
-}
+let currentIndex = -1;
 
 function openImage(index) {
-  location.hash = images[index];
+  closeImage();
+
+  currentIndex = index;
+
+  const lightbox = document.getElementById(images[currentIndex]);
+  lightbox.classList.add("is-open");
+
+  document.body.classList.add("no-scroll");
 }
 
 function closeImage() {
-  history.pushState("", document.title, location.pathname + location.search);
+  document.querySelectorAll(".lightbox").forEach((lightbox) => {
+    lightbox.classList.remove("is-open");
+  });
+
+  document.body.classList.remove("no-scroll");
+  currentIndex = -1;
 }
 
-// ESCで閉じる
-document.addEventListener("keydown", (e) => {
-  const currentIndex = getCurrentIndex();
+document.querySelectorAll(".square-photo").forEach((photo) => {
+  photo.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  if (e.key === "Escape" && currentIndex !== -1) {
+    const id = photo.dataset.target;
+    const index = images.indexOf(id);
+
+    if (index !== -1) {
+      openImage(index);
+    }
+  });
+});
+
+document.querySelectorAll(".lightbox-close").forEach((closeButton) => {
+  closeButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeImage();
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (currentIndex === -1) return;
+
+  if (e.key === "Escape") {
     closeImage();
   }
 
-  if (e.key === "ArrowRight" && currentIndex !== -1) {
+  if (e.key === "ArrowRight") {
     openImage((currentIndex + 1) % images.length);
   }
 
-  if (e.key === "ArrowLeft" && currentIndex !== -1) {
+  if (e.key === "ArrowLeft") {
     openImage((currentIndex - 1 + images.length) % images.length);
   }
 });
 
-// ホイールで次/前画像
 document.addEventListener("wheel", (e) => {
-  const currentIndex = getCurrentIndex();
-
   if (currentIndex === -1) return;
 
   e.preventDefault();
@@ -44,20 +73,17 @@ document.addEventListener("wheel", (e) => {
     openImage((currentIndex - 1 + images.length) % images.length);
   }
 }, { passive: false });
+
 let startX = 0;
-let endX = 0;
 
 document.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
 });
 
 document.addEventListener("touchend", (e) => {
-  endX = e.changedTouches[0].clientX;
-
-  const currentIndex = getCurrentIndex();
-
   if (currentIndex === -1) return;
 
+  const endX = e.changedTouches[0].clientX;
   const diff = endX - startX;
 
   if (Math.abs(diff) < 50) return;
