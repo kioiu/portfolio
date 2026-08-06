@@ -19,7 +19,9 @@ const images = [
   
     "images/hotaru_v.JPG",
 
-      "images/room.JPG"
+      "images/room.JPG",
+
+      "images/desk.JPEG"
 ];
 
 const heroBg = document.querySelector(".hero-bg");
