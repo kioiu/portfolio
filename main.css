@@ -203,3 +203,16 @@ footer {
 html {
   scroll-behavior: smooth;
 }
+.button{
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #a0a0a4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.button:hover{
+  background-color: #ed9703;
+}

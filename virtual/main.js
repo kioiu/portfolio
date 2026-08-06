@@ -1,4 +1,4 @@
-const images = ["img01", "img02", "img03", "img04", "img05"];
+const images = ["img01", "img02", "img03", "img04", "img05", "img06", "img07", "img08", "img09"];
 
 let currentIndex = -1;
 
