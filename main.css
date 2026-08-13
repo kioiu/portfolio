@@ -216,3 +216,18 @@ html {
 .button:hover{
   background-color: #ed9703;
 }
+@media (max-width: 600px) {
+  #contact p {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #contact .button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    text-align: center;
+  }
+}
