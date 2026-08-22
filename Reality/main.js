@@ -1,8 +1,4 @@
-const images = [
-  "img01", "img02", "img03", "img04", "img05", "img06",
-  "img07", "img08", "img09", "img10", "img11", "img12",
-  "img13", "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23" ,"img24"
-];
+const images = [...document.querySelectorAll(".square-photo")].map(photo => photo.dataset.target);
 
 let currentIndex = -1;
 

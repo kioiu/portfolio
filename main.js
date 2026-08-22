@@ -21,7 +21,9 @@ const images = [
 
       "images/room.JPG",
 
-      "images/desk.JPEG"
+      "images/desk.JPEG",
+
+      "images/HHKB.JPG"
 ];
 
 const heroBg = document.querySelector(".hero-bg");
