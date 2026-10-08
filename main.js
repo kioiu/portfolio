@@ -7,23 +7,27 @@ const images = [
 
   "images/blueworld.JPG",
 
-  "images/hotaru.jpg",
+  // "images/hotaru.jpg",
 
   "images/sigma.png",
 
   "images/sunset2.jpg",
 
-  "images/tokei.jpg",
+  // "images/tokei.jpg",
 
   "images/summer.JPG",
   
     "images/hotaru_v.JPG",
 
-      "images/room.JPG",
+      // "images/room.JPG",
 
-      "images/desk.JPEG",
+      // "images/desk.JPEG",
 
-      "images/HHKB.JPG"
+      // "images/HHKB.JPG"
+
+      "images/den.JPG",
+      
+      "images/tt.JPG"
 ];
 
 const heroBg = document.querySelector(".hero-bg");
